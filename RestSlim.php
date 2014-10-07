@@ -5,33 +5,33 @@ namespace RestSlim;
 $_restActions = array();
 // http://en.wikipedia.org/wiki/Representational_state_transfer#RESTful_web_APIs
 $_restActions['index'] = $_restActions['list'] = array(
-	"route" => '',
-	"method" => 'get'
+    "route" => '',
+    "method" => 'get'
 );
 $_restActions['putAll'] = array(
-	"route" => '',
-	"method" => 'put'
+    "route" => '',
+    "method" => 'put'
 );
 $_restActions['post'] = $_restActions['create'] = array(
-	"route" => '',
-	"method" => 'post'
+    "route" => '',
+    "method" => 'post'
 );
 $_restActions['deleteAll'] = $_restActions['delAll'] = array(
-	"route" => '',
-	"method" => 'delete'
+    "route" => '',
+    "method" => 'delete'
 );
 
 $_restActions['get'] = $_restActions['read'] = array(
-	"route" => '/:id',
-	"method" => 'get'
+    "route" => '/:id',
+    "method" => 'get'
 );
 $_restActions['put'] = $_restActions['update'] = array(
-	"route" => '/:id',
-	"method" => 'put'
+    "route" => '/:id',
+    "method" => 'put'
 );
 $_restActions['delete'] = $_restActions['del'] = array(
-	"route" => '/:id',
-	"method" => 'delete'
+    "route" => '/:id',
+    "method" => 'delete'
 );
 
 class RestSlim {
