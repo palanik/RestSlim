@@ -48,7 +48,6 @@ class RestSlim {
 
         $this->actions = count($actions) > 0 ? $actions : $_restActions;
         $this->app = null;
-
     }
 
     protected function _viaApp($actionItem) {
@@ -58,11 +57,14 @@ class RestSlim {
         array_unshift($actionItem["callable"], $restAction["route"]);
 
         // Call app->METHOD
-        return call_user_func_array(array($this->app, 
+        $route = call_user_func_array(array($this->app, 
                                         $restAction["method"]
                                         ), 
                                     $actionItem["callable"]
                                     );
+
+	// Set the route name.
+	return $route->name($actionItem["actionName"]);
     }
 
     /*
