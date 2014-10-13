@@ -1,0 +1,22 @@
+{
+    "name": "palanik/restslim",
+    "description": "Minimalist REST framework for PHP Slim.",
+    "keywords": [
+        "restslim",
+        "restful",
+        "slimphp",
+        "slim",
+        "api"
+    ],
+    "require": {
+        "slim/slim": "2.4.0"
+    },
+    "license": "MIT",
+    "homepage": "https://github.com/palanik/RestSlim",
+    "authors": [
+        {
+            "name": "palanik",
+            "email": "palani.kumanan@gmail.com"
+        }
+    ]
+}
