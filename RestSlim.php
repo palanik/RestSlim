@@ -5,32 +5,32 @@ namespace RestSlim;
 $_restActions = array();
 // http://en.wikipedia.org/wiki/Representational_state_transfer#RESTful_web_APIs
 $_restActions['index'] = $_restActions['list'] = array(
-    "route" => '',
+    "route" => '/',
     "method" => 'get'
 );
 $_restActions['putAll'] = array(
-    "route" => '',
+    "route" => '/',
     "method" => 'put'
 );
 $_restActions['post'] = $_restActions['create'] = array(
-    "route" => '',
+    "route" => '/',
     "method" => 'post'
 );
 $_restActions['deleteAll'] = $_restActions['delAll'] = array(
-    "route" => '',
+    "route" => '/',
     "method" => 'delete'
 );
 
 $_restActions['get'] = $_restActions['read'] = array(
-    "route" => '/:id',
+    "route" => '/:id/?',
     "method" => 'get'
 );
 $_restActions['put'] = $_restActions['update'] = array(
-    "route" => '/:id',
+    "route" => '/:id/?',
     "method" => 'put'
 );
 $_restActions['delete'] = $_restActions['del'] = array(
-    "route" => '/:id',
+    "route" => '/:id/?',
     "method" => 'delete'
 );
 
@@ -44,10 +44,13 @@ class RestSlim {
     protected $_stack = array();
 
     public function __construct($resource, array $actions = array()) {
+        global $_restActions;
+        
         $this->resourceName = $resource;
 
         $this->actions = count($actions) > 0 ? $actions : $_restActions;
         $this->app = null;
+
     }
 
     protected function _viaApp($actionItem) {
@@ -62,11 +65,15 @@ class RestSlim {
                                         ), 
                                     $actionItem["callable"]
                                     );
+        // Set the route name.
+        $route = $route->name($actionItem["actionName"]);
 
-	// Set the route name.
-	return $route->name($actionItem["actionName"]);
+        if (array_key_exists("conditions", $restAction)) {
+            $route = $route->conditions($restAction["conditions"]);
+        }
+
+        return $route;
     }
-
     /*
      * Handle REST actions
      */
@@ -76,7 +83,7 @@ class RestSlim {
             if (isset($this->app)) {
                 $this->_viaApp($actionItem);
             }
-            else {    // Defer action until app
+            else {  // Defer action until app is available
                 array_push($this->_stack, $actionItem);
             }
             return $this;
