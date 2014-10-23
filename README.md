@@ -1,12 +1,26 @@
 RestSlim
 ========
+[![Latest Stable Version](https://poser.pugx.org/palanik/restslim/v/stable.svg)](https://packagist.org/packages/palanik/restslim)
+[![License](https://poser.pugx.org/palanik/restslim/license.svg)](https://packagist.org/packages/palanik/restslim)
 
 Minimalist REST framework for [Slim](http://www.slimframework.com/).
 
-[Slim](http://www.slimframework.com/) is a PHP micro framework that helps you quickly write simple yet powerful web applications and APIs.
+[Slim](https://github.com/codeguy/Slim) is a PHP micro framework that helps you quickly write simple, yet powerful web applications and APIs.
 
-Shift your focus from Routes to Resources, while building RESTful API with php Slim.
+Shift your focus from Routes to Resources, while building RESTful API with PHP Slim.
 
+##Installation
+You can install via composer. Add this to your composer.json
+
+```json
+{
+  "require": {
+    "slim/slim": "2.4.*",
+    "palanik/restslim": "0.1.*"
+  }
+}
+
+```
 ## Greetings Tutorial
 ```php
 $app = new \Slim\Slim();
